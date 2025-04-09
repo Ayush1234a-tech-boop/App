@@ -1,0 +1,158 @@
+/* General body styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background: #121212;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    background-image: linear-gradient(135deg, #0a0a0a, #2c3e50);
+  }
+  
+  /* Container for the menu */
+  .menu-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: #1e1e1e;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+    max-width: 100%;
+    width: 450px;
+    position: relative;
+    animation: neon-glow 1.5s ease-in-out infinite alternate;
+  }
+  
+  /* Logo styling */
+  .logo h1 {
+    font-size: 3rem;
+    color: #00ffd5;
+    margin: 10px 0;
+    font-weight: bold;
+    text-shadow: 0 0 5px #00ffd5, 0 0 10px #00ffd5, 0 0 15px #00ffd5;
+  }
+  
+  .logo p {
+    font-size: 1.2rem;
+    color: #fff;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff;
+  }
+  
+  /* Menu section for game buttons */
+  .menu {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 20px;
+  }
+  
+  /* Button style for each game option */
+  .game-btn {
+    background-color: #1a1a1a;
+    color: #fff;
+    font-size: 1.2rem;
+    padding: 20px 40px;
+    border: 2px solid #00ffd5;
+    border-radius: 10px;
+    width: 80%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.6);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* Hover effects for buttons */
+  .game-btn:hover {
+    background-color: #00ffd5;
+    color: #1a1a1a;
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 1);
+  }
+  
+  .game-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: linear-gradient(45deg, #ff6ec7, #00aaff, #00ffd5, #ff6ec7);
+    animation: glowing 10s ease-in-out infinite;
+    z-index: -1;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+  }
+  
+  @keyframes glowing {
+    0% {
+      transform: translate(-50%, -50%) scale(0);
+      opacity: 0.5;
+    }
+    50% {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+    100% {
+      transform: translate(-50%, -50%) scale(0);
+      opacity: 0.5;
+    }
+  }
+  
+  /* Neon border effect */
+  .menu-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 255, 255, 0.3);
+    border-radius: 15px;
+    z-index: -1;
+    animation: neon-border 1.5s ease-in-out infinite alternate;
+  }
+  
+  /* Neon glow animation for container */
+  @keyframes neon-glow {
+    0% {
+      box-shadow: 0 0 10px #00ffd5, 0 0 20px #00ffd5, 0 0 30px #00ffd5;
+    }
+    100% {
+      box-shadow: 0 0 20px #00ffd5, 0 0 40px #00ffd5, 0 0 60px #00ffd5;
+    }
+  }
+  
+  /* Neon border animation */
+  @keyframes neon-border {
+    0% {
+      border-color: rgba(0, 255, 255, 0.4);
+    }
+    100% {
+      border-color: rgba(0, 255, 255, 1);
+    }
+  }
+  
+  /* Responsive styles */
+  @media screen and (max-width: 500px) {
+    .game-btn {
+      width: 90%;
+      font-size: 1rem;
+    }
+  
+    .logo h1 {
+      font-size: 2rem;
+    }
+  
+    .logo p {
+      font-size: 1rem;
+    }
+  }
+  

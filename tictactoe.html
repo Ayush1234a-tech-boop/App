@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tic-Tac-Toe - Ayush HUB</title>
+  <style>
+    /* styles.css */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #282828;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  flex-direction: column;
+}
+
+/* Ayush HUB Heading Styles */
+.header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.header h1 {
+  color: #00ffd5;
+  font-size: 4rem;
+}
+
+.header .tagline {
+  color: #fff;
+  font-size: 1.2rem;
+  margin-top: -10px;
+}
+
+/* Game Container */
+.game-container {
+  text-align: center;
+  background: #1e1e1e;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+  width: 320px;
+}
+
+h2 {
+  color: #00ffd5;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.message {
+  font-size: 1.2rem;
+  margin: 20px 0;
+}
+
+.board {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.row {
+  display: flex;
+}
+
+.cell {
+  width: 100px;
+  height: 100px;
+  border: 2px solid #00ffd5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  color: #00ffd5;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.cell:hover {
+  background-color: rgba(0, 255, 255, 0.1);
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #00ffd5;
+  color: #1e1e1e;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #00b3b3;
+}
+
+/* User Manual Section */
+.user-manual {
+  margin-top: 30px;
+  text-align: left;
+  background: #333;
+  padding: 20px;
+  border-radius: 10px;
+  width: 320px;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+}
+
+.user-manual h3 {
+  color: #00ffd5;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.user-manual ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.user-manual li {
+  color: #fff;
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+.user-manual li strong {
+  color: #00ffd5;
+}
+
+
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Ayush HUB</h1>
+    <p class="tagline">Welcome to Ayush HUB - Your gaming paradise!</p>
+  </div>
+
+  <div class="game-container">
+    <h2>Tic-Tac-Toe</h2>
+    <div id="message" class="message">Player X's Turn</div>
+    <div class="board">
+      <div class="row">
+        <div class="cell" data-index="0"></div>
+        <div class="cell" data-index="1"></div>
+        <div class="cell" data-index="2"></div>
+      </div>
+      <div class="row">
+        <div class="cell" data-index="3"></div>
+        <div class="cell" data-index="4"></div>
+        <div class="cell" data-index="5"></div>
+      </div>
+      <div class="row">
+        <div class="cell" data-index="6"></div>
+        <div class="cell" data-index="7"></div>
+        <div class="cell" data-index="8"></div>
+      </div>
+    </div>
+    <button id="restartButton">Restart Game</button>
+  </div>
+
+  <!-- User Manual Section -->
+  <div class="user-manual">
+    <h3>User Manual</h3>
+    <p>Welcome to **Tic-Tac-Toe**! Here’s how you can play:</p>
+    <ul>
+      <li><strong>Objective</strong>: Be the first to get three of your marks in a row, column
+  <script>
+    // app.js
+const board = document.querySelector('.board');
+const cells = document.querySelectorAll('.cell');
+const message = document.getElementById('message');
+const restartButton = document.getElementById('restartButton');
+
+let currentPlayer = 'X';
+let gameBoard = ['', '', '', '', '', '', '', '', ''];  // Track the board state
+
+// Function to check for a winner
+const checkWinner = () => {
+  const winPatterns = [
+    [0, 1, 2], // Row 1
+    [3, 4, 5], // Row 2
+    [6, 7, 8], // Row 3
+    [0, 3, 6], // Column 1
+    [1, 4, 7], // Column 2
+    [2, 5, 8], // Column 3
+    [0, 4, 8], // Diagonal 1
+    [2, 4, 6], // Diagonal 2
+  ];
+
+  for (let pattern of winPatterns) {
+    const [a, b, c] = pattern;
+    if (gameBoard[a] && gameBoard[a] === gameBoard[b] && gameBoard[a] === gameBoard[c]) {
+      message.textContent = `${currentPlayer} Wins!`;
+      setTimeout(() => alert(`${currentPlayer} Wins!`), 100);
+      return true;
+    }
+  }
+  return false;
+};
+
+// Function to check if the board is full (draw condition)
+const checkDraw = () => {
+  if (!gameBoard.includes('')) {
+    message.textContent = "It's a Draw!";
+    setTimeout(() => alert("It's a Draw!"), 100);
+    return true;
+  }
+  return false;
+};
+
+// Function to handle a cell click
+const handleCellClick = (e) => {
+  const index = e.target.getAttribute('data-index');
+  
+  if (gameBoard[index]) return; // If the cell is already filled, do nothing
+
+  gameBoard[index] = currentPlayer;
+  e.target.textContent = currentPlayer;
+
+  if (checkWinner() || checkDraw()) return;
+
+  currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+  message.textContent = `Player ${currentPlayer}'s Turn`;
+};
+
+// Function to restart the game
+const restartGame = () => {
+  gameBoard = ['', '', '', '', '', '', '', '', ''];
+  currentPlayer = 'X';
+  message.textContent = "Player X's Turn";
+  cells.forEach(cell => {
+    cell.textContent = '';
+  });
+};
+
+// Add event listeners to cells
+cells.forEach(cell => {
+  cell.addEventListener('click', handleCellClick);
+});
+
+// Restart button functionality
+restartButton.addEventListener('click', restartGame);
+
+  </script>

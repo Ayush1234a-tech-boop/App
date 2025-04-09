@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Water Sort Puzzle - Ayush HUB</title>
+  <style>
+    /* styles.css */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #282828;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  flex-direction: column;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.header h1 {
+  color: #00ffd5;
+  font-size: 4rem;
+}
+
+.header .tagline {
+  color: #fff;
+  font-size: 1.2rem;
+  margin-top: -10px;
+}
+
+/* Game Container */
+.game-container {
+  text-align: center;
+  background: #1e1e1e;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+  width: 400px;
+}
+
+h2 {
+  color: #00ffd5;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+/* Bottles */
+.bottles-container {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.bottle {
+  width: 60px;
+  height: 180px;
+  background-color: #fff;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 5px;
+  cursor: pointer;
+  border: 2px solid #00ffd5;
+  position: relative;
+}
+
+.water {
+  width: 100%;
+  height: 50px;
+  border-radius: 5px;
+}
+
+.water1 {
+  background-color: #ff0000;
+}
+
+.water2 {
+  background-color: #0000ff;
+}
+
+.water3 {
+  background-color: #ffff00;
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #00ffd5;
+  color: #1e1e1e;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #00b3b3;
+}
+
+/* User Manual Section */
+.user-manual {
+  margin-top: 30px;
+  text-align: left;
+  background: #333;
+  padding: 20px;
+  border-radius: 10px;
+  width: 400px;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+}
+
+.user-manual h3 {
+  color: #00ffd5;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.user-manual ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.user-manual li {
+  color: #fff;
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+.user-manual li strong {
+  color: #00ffd5;
+}
+
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Ayush HUB</h1>
+    <p class="tagline">Welcome to Ayush HUB - Your gaming paradise!</p>
+  </div>
+
+  <div class="game-container">
+    <h2>Water Sort Puzzle</h2>
+    <div class="bottles-container">
+      <div class="bottle" id="bottle1">
+        <div class="water water1"></div>
+        <div class="water water2"></div>
+        <div class="water water3"></div>
+      </div>
+      <div class="bottle" id="bottle2">
+        <div class="water water2"></div>
+        <div class="water water1"></div>
+        <div class="water water3"></div>
+      </div>
+      <div class="bottle" id="bottle3">
+        <div class="water water3"></div>
+        <div class="water water1"></div>
+        <div class="water water2"></div>
+      </div>
+    </div>
+
+    <button id="restartButton">Restart Game</button>
+  </div>
+
+  <!-- User Manual Section -->
+  <div class="user-manual">
+    <h3>User Manual</h3>
+    <p>Welcome to **Water Sort Puzzle**! Here’s how you can play:</p>
+    <ul>
+      <li><strong>Objective</strong>: Sort all the colored liquids into individual bottles.</li>
+      <li><strong>Controls</strong>: Click on one bottle and then click another to pour liquid from one bottle to the other. You can only pour if both bottles have the same color at the top.</li>
+      <li><strong>Winning</strong>: The game is won when all the bottles are sorted and each contains only one color.</li>
+      <li><strong>Restarting</strong>: You can restart the game by clicking the "Restart Game" button at the bottom.</li>
+    </ul>
+  </div>
+
+  <script> 
+    // app.js
+const bottles = document.querySelectorAll('.bottle');
+const restartButton = document.getElementById('restartButton');
+let selectedBottle = null;
+
+// Function to handle bottle click (selecting or pouring)
+const handleBottleClick = (e) => {
+  const clickedBottle = e.currentTarget;
+
+  if (!selectedBottle) {
+    // If no bottle is selected, select this bottle
+    selectedBottle = clickedBottle;
+    clickedBottle.style.borderColor = '#ff6ec7'; // Highlight selected bottle
+  } else {
+    // If a bottle is selected, try pouring
+    const selectedWater = selectedBottle.lastElementChild;
+    const clickedWater = clickedBottle.lastElementChild;
+
+    // Check if pouring is possible
+    if (!clickedWater || selectedWater && selectedWater.style.backgroundColor === clickedWater.style.backgroundColor) {
+      // Pouring the water from selectedBottle to clickedBottle
+      clickedBottle.appendChild(selectedWater);
+      selectedBottle = null; // Deselect after pouring
+      resetBottleBorders();
+      checkWin();
+    } else {
+      // Reset if pouring is not allowed
+      selectedBottle = null;
+      resetBottleBorders();
+    }
+  }
+};
+
+// Function to reset the border color of bottles
+const resetBottleBorders = () => {
+  bottles.forEach(bottle => {
+    bottle.style.borderColor = '#00ffd5';
+  });
+};
+
+// Function to check if the game is won
+const checkWin = () => {
+  const allBottles = Array.from(bottles);
+  const win = allBottles.every(bottle => {
+    const waters = Array.from(bottle.children);
+    return waters.every((water, index) => {
+      return index === 0 || water.style.backgroundColor === waters[0].style.backgroundColor;
+    });
+  });
+
+  if (win) {
+    alert('Congratulations! You sorted all the liquids.');
+  }
+};
+
+// Function to restart the game
+const restartGame = () => {
+  // Reset all bottles to their initial state
+  bottles.forEach(bottle => {
+    const waterElements = Array.from(bottle.children);
+    waterElements.forEach(water => {
+      bottle.removeChild(water);
+    });
+  });
+
+  // Manually reset each bottle’s water order for the restart
+  document.getElementById('bottle1').innerHTML = `<div class="water water1"></div><div class="water water2"></div><div class="water water3"></div>`;
+  document.getElementById('bottle2').innerHTML = `<div class="water water2"></div><div class="water water1"></div><div class="water water3"></div>`;
+  document.getElementById('bottle3').innerHTML = `<div class="water water3"></div><div class="water water1"></div><div class="water water2"></div>`;
+
+  // Reset game state
+  selectedBottle = null;
+  resetBottleBorders();
+};
+
+// Add event listeners to each bottle
+bottles.forEach(bottle => {
+  bottle.addEventListener('click', handleBottleClick);
+});
+
+// Restart button event listener
+restartButton.addEventListener('click', restartGame);
+
+  </script>
+</body>
+</html>
