@@ -1,30 +1,505 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gaming App</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Epic Minecraft Adventure</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Minecraft&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="menu-container">
-    <div class="logo">
-      <h1>Ayush Hub</h1>
-      <p>Play Your Favorite Games</p>
+    <!-- Loading Screen -->
+    <div class="loading-screen">
+        <div class="loading-bar">
+            <div class="progress"></div>
+        </div>
+        <p>Loading world...</p>
     </div>
-    <div class="menu">
-      <button class="game-btn" onclick="window.location.href='tictactoe.html'">Tic-Tac-Toe</button>
-      <button class="game-btn" onclick="window.location.href='flappybird.html'">Flappy Bird</button>
-      <button class="game-btn" onclick="window.location.href='stonepaperscissorcut.html'">Stone Paper Scissors</button>
-      <button class="game-btn" onclick="window.location.href='dinosaurrunning.html'">Dinosaur Running</button>
-      <button class="game-btn" onclick="window.location.href='chess.html'">Chess</button>
-      <button class="game-btn" onclick="window.location.href='ludo.html'">Ludo</button>
-      <button class="game-btn" onclick="window.location.href='watersort puzzle.html'">Water Sort Puzzle</button>
-    </div>
-  </div>
 
-  
+    <!-- Particle Background -->
+    <div id="particles-js"></div>
 
-  <script src="app.js"></script>
+    <!-- Navigation -->
+    <nav class="minecraft-nav">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <img src="assets/steve-head.jpg" alt="Steve Head">
+                <span>Minecraft Adventures</span>
+            </div>
+            <div class="nav-links">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">About Me</a>
+                <a href="#journey" class="nav-link">My Journey</a>
+                <a href="#builds" class="nav-link">My Builds</a>
+                <a href="#gallery" class="nav-link">Gallery</a>
+                <a href="#resources" class="nav-link">Resources</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            <div class="nav-toggle">
+                <div class="hamburger"></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="home" class="hero-section">
+        <div class="hero-content">
+            <h1 class="minecraft-title">My Minecraft Adventure</h1>
+            <p class="hero-subtitle">From humble beginnings to epic creations</p>
+            <div class="hero-buttons">
+                <button class="minecraft-btn btn-primary">Start Exploring</button>
+                <button class="minecraft-btn btn-secondary">Watch Trailer</button>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="assets/hero-steve.png" alt="Steve" class="pixel-art floating">
+        </div>
+        <div class="scroll-down">
+            <span>Scroll Down</span>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </header>
+
+    <!-- About Me Section -->
+    <section id="about" class="about-section">
+        <div class="section-header">
+            <h2 class="section-title">About The Adventurer</h2>
+            <div class="section-divider"></div>
+        </div>
+        <div class="about-container">
+            <div class="about-card pixel-border">
+                <div class="about-image">
+                    <img src="assets/body1.png" alt="My Minecraft Skin" class="pixel-art">
+                    <div class="social-links">
+                        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitch"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-discord"></i></a>
+                    </div>
+                </div>
+                <div class="about-content">
+                    <h3>Player Stats</h3>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-icon"><i class="fas fa-user"></i></div>
+                            <div class="stat-info">
+                                <span class="stat-value">Ayush123445</span>
+                                <span class="stat-label">Username</span>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-icon"><i class="fas fa-calendar-alt"></i></div>
+                            <div class="stat-info">
+                                <span class="stat-value">5 Years</span>
+                                <span class="stat-label">Playing</span>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-icon"><i class="fas fa-map"></i></div>
+                            <div class="stat-info">
+                                <span class="stat-value">127</span>
+                                <span class="stat-label">Worlds Created</span>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-icon"><i class="fas fa-home"></i></div>
+                            <div class="stat-info">
+                                <span class="stat-value">42</span>
+                                <span class="stat-label">Bases Built</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="about-text">
+                        Hello fellow crafters! I'm Ayush123445, a passionate Minecraft player who's been exploring blocky worlds 
+                        for over 5 years. What started as a simple survival world has turned into an epic journey of 
+                        creativity, adventure, and community. Join me as I share my most memorable moments, builds, 
+                        and lessons learned along the way.
+                    </p>
+                    <div class="achievements">
+                        <h4>Notable Achievements</h4>
+                        <div class="achievement-badges">
+                            <span class="badge">Dragon Slayer</span>
+                            <span class="badge">Master Builder</span>
+                            <span class="badge">Redstone Genius</span>
+                            <span class="badge">Nether Explorer</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- My Journey Timeline -->
+    <section id="journey" class="journey-section">
+        <div class="section-header">
+            <h2 class="section-title">My Minecraft Journey</h2>
+            <div class="section-divider"></div>
+        </div>
+        <div class="timeline-container">
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content pixel-border">
+                        <div class="timeline-date">2018 - The Beginning</div>
+                        <h3 class="timeline-title">First Steps in a New World</h3>
+                        <div class="timeline-image">
+                            <img src="assets/sleep.webp" alt="First Night">
+                        </div>
+                        <p class="timeline-text">
+                            My very first world! I remember punching trees, building a dirt hut, and barely surviving 
+                            the first night. Little did I know this was the start of an incredible adventure.
+                        </p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content pixel-border">
+                        <div class="timeline-date">2019 - Learning the Ropes</div>
+                        <h3 class="timeline-title">First Major Builds</h3>
+                        <div class="timeline-image">
+                            <img src="assets/first-house.jpg" alt="First House">
+                        </div>
+                        <p class="timeline-text">
+                            Graduated from dirt huts to wooden houses! Learned about farming, mining, and crafting 
+                            proper tools. Lost my first diamond pickaxe to lava - a rite of passage.
+                        </p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content pixel-border">
+                        <div class="timeline-date">2020 - Adventure Calls</div>
+                        <h3 class="timeline-title">Exploring Beyond</h3>
+                        <div class="timeline-image">
+                            <img src="assets/nether.jpg" alt="Nether Exploration">
+                        </div>
+                        <p class="timeline-text">
+                            Ventured into the Nether for the first time. Built my first nether portal after many 
+                            failed attempts. Discovered villages and began trading with villagers.
+                        </p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content pixel-border">
+                        <div class="timeline-date">2021 - Master Builder</div>
+                        <h3 class="timeline-title">Megabase Construction</h3>
+                        <div class="timeline-image">
+                            <img src="assets/floating-island.jpg" alt="Megabase">
+                        </div>
+                        <p class="timeline-text">
+                            Started my first megabase project - a floating island city with automated farms and 
+                            intricate redstone contraptions. Learned about world editing and large-scale planning.
+                        </p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content pixel-border">
+                        <div class="timeline-date">2022 - Community & Multiplayer</div>
+                        <h3 class="timeline-title">Joining Servers</h3>
+                        <div class="timeline-image">
+                            <img src="assets/multiplayer.jpg" alt="Server Play">
+                        </div>
+                        <p class="timeline-text">
+                            Expanded to multiplayer servers. Joined a survival community and participated in build 
+                            competitions. Made my first YouTube videos showcasing my builds.
+                        </p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content pixel-border">
+                        <div class="timeline-date">2023 - Present Day</div>
+                        <h3 class="timeline-title">Current Projects</h3>
+                        <div class="timeline-image">
+                            <img src="assets/massive.jpg" alt="Current Project">
+                        </div>
+                        <p class="timeline-text">
+                            Working on a massive medieval kingdom with fully functional infrastructure. Experimenting 
+                            with datapacks and mods to enhance gameplay. Documenting everything for the community!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- My Builds Showcase -->
+    <section id="builds" class="builds-section">
+        <div class="section-header">
+            <h2 class="section-title">My Builds Showcase</h2>
+            <div class="section-divider"></div>
+        </div>
+        <div class="builds-filter">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="survival">Survival</button>
+            <button class="filter-btn" data-filter="creative">Creative</button>
+            <button class="filter-btn" data-filter="redstone">Redstone</button>
+            <button class="filter-btn" data-filter="terraforming">Terraforming</button>
+        </div>
+        <div class="builds-grid">
+            <div class="build-card pixel-border" data-category="survival">
+                <div class="build-image">
+                    <img src="assets/survival-base.jpg" alt="Survival Base">
+                    <div class="build-overlay">
+                        <h3>Forest Survival Base</h3>
+                        <p>My first proper survival home with hidden storage and farm</p>
+                        <button class="view-btn">View Tour</button>
+                    </div>
+                </div>
+            </div>
+            <div class="build-card pixel-border" data-category="creative">
+                <div class="build-image">
+                    <img src="assets/build2.jpg" alt="Castle">
+                    <div class="build-overlay">
+                        <h3>Medieval Castle</h3>
+                        <p>Massive castle with throne room, barracks, and secret passages</p>
+                        <button class="view-btn">View Tour</button>
+                    </div>
+                </div>
+            </div>
+            <div class="build-card pixel-border" data-category="redstone">
+                <div class="build-image">
+                    <img src="assets/build3.jpg" alt="Redstone Contraption">
+                    <div class="build-overlay">
+                        <h3>Item Sorting System</h3>
+                        <p>Fully automatic storage system with 42 categories</p>
+                        <button class="view-btn">View Tour</button>
+                    </div>
+                </div>
+            </div>
+            <div class="build-card pixel-border" data-category="terraforming">
+                <div class="build-image">
+                    <img src="assets/floating-island.jpg" alt="Terraformed Island">
+                    <div class="build-overlay">
+                        <h3>Floating Islands</h3>
+                        <p>Custom biome with waterfalls and interconnected islands</p>
+                        <button class="view-btn">View Tour</button>
+                    </div>
+                </div>
+            </div>
+            <div class="build-card pixel-border" data-category="survival">
+                <div class="build-image">
+                    <img src="assets/netherhub.webp" alt="Nether Hub">
+                    <div class="build-overlay">
+                        <h3>Nether Hub</h3>
+                        <p>Central transportation hub with ice highways to key locations</p>
+                        <button class="view-btn">View Tour</button>
+                    </div>
+                </div>
+            </div>
+            <div class="build-card pixel-border" data-category="creative">
+                <div class="build-image">
+                    <img src="assets/city.jpg" alt="Modern City">
+                    <div class="build-overlay">
+                        <h3>Modern City</h3>
+                        <p>Complete city with skyscrapers, roads, and functional interiors</p>
+                        <button class="view-btn">View Tour</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery-section">
+        <div class="section-header">
+            <h2 class="section-title">Adventure Gallery</h2>
+            <div class="section-divider"></div>
+        </div>
+        <div class="gallery-container">
+            <div class="gallery-item pixel-border">
+                <img src="assets/ph1.jpg" alt="Mountain View">
+                <div class="gallery-caption">Sunrise over my mountain base</div>
+            </div>
+            <div class="gallery-item pixel-border">
+                <img src="assets/ph2.avif" alt="Nether Fortress">
+                <div class="gallery-caption">Conquering my first Nether fortress</div>
+            </div>
+            <div class="gallery-item pixel-border">
+                <img src="assets/ph3.jpg" alt="Ocean Monument">
+                <div class="gallery-caption">Ocean monument raid with friends</div>
+            </div>
+            <div class="gallery-item pixel-border">
+                <img src="assets/ph4.webp" alt="End Dragon">
+                <div class="gallery-caption">First Ender Dragon defeat</div>
+            </div>
+            <div class="gallery-item pixel-border">
+                <img src="assets/ph5.jpg" alt="Village">
+                <div class="gallery-caption">Village I transformed and protected</div>
+            </div>
+            <div class="gallery-item pixel-border">
+                <img src="assets/ph6.png" alt="Minecart System">
+                <div class="gallery-caption">Underground minecart network</div>
+            </div>
+            <div class="gallery-item pixel-border">
+                <img src="assets/ph7.jpg" alt="Enchanting Room">
+                <div class="gallery-caption">Maxed out enchanting setup</div>
+            </div>
+            <div class="gallery-item pixel-border">
+                <img src="assets/ph8.webp" alt="Beacon">
+                <div class="gallery-caption">First fully powered beacon</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section id="resources" class="resources-section">
+        <div class="section-header">
+            <h2 class="section-title">Resources & Downloads</h2>
+            <div class="section-divider"></div>
+        </div>
+        <div class="resources-container">
+            <div class="resource-card pixel-border">
+                <div class="resource-icon">
+                    <i class="fas fa-download"></i>
+                </div>
+                <h3 class="resource-title">World Downloads</h3>
+                <p class="resource-desc">Download my adventure worlds and explore them yourself</p>
+                <button class="resource-btn">Browse Worlds</button>
+            </div>
+            <div class="resource-card pixel-border">
+                <div class="resource-icon">
+                    <i class="fas fa-book"></i>
+                </div>
+                <h3 class="resource-title">Building Guides</h3>
+                <p class="resource-desc">Step-by-step tutorials for my most popular builds</p>
+                <button class="resource-btn">View Guides</button>
+            </div>
+            <div class="resource-card pixel-border">
+                <div class="resource-icon">
+                    <i class="fas fa-video"></i>
+                </div>
+                <h3 class="resource-title">Video Tutorials</h3>
+                <p class="resource-desc">Watch me build and explain my techniques</p>
+                <button class="resource-btn">Watch Now</button>
+            </div>
+            <div class="resource-card pixel-border">
+                <div class="resource-icon">
+                    <i class="fas fa-palette"></i>
+                </div>
+                <h3 class="resource-title">Texture Packs</h3>
+                <p class="resource-desc">Custom texture packs I've created for my builds</p>
+                <button class="resource-btn">Download</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="section-header">
+            <h2 class="section-title">Join My Adventure</h2>
+            <div class="section-divider"></div>
+        </div>
+        <div class="contact-container">
+            <div class="contact-form pixel-border">
+                <h3>Send Me a Message</h3>
+                <form>
+                    <div class="form-group">
+                        <input type="text" placeholder="Your Name" class="minecraft-input">
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Your Email" class="minecraft-input">
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Your Message" class="minecraft-input"></textarea>
+                    </div>
+                    <button type="submit" class="minecraft-btn btn-primary">Send Message</button>
+                </form>
+            </div>
+            <div class="contact-info">
+                <h3>Connect With Me</h3>
+                <div class="contact-methods">
+                    <div class="contact-method">
+                        <div class="method-icon">
+                            <i class="fab fa-discord"></i>
+                        </div>
+                        <div class="method-info">
+                            <span class="method-label">Discord</span>
+                            <span class="method-value">Steve42#0000</span>
+                        </div>
+                    </div>
+                    <div class="contact-method">
+                        <div class="method-icon">
+                            <i class="fab fa-youtube"></i>
+                        </div>
+                        <div class="method-info">
+                            <span class="method-label">YouTube</span>
+                            <span class="method-value">/Steve42Adventures</span>
+                        </div>
+                    </div>
+                    <div class="contact-method">
+                        <div class="method-icon">
+                            <i class="fab fa-twitter"></i>
+                        </div>
+                        <div class="method-info">
+                            <span class="method-label">Twitter</span>
+                            <span class="method-value">@Steve42MC</span>
+                        </div>
+                    </div>
+                    <div class="contact-method">
+                        <div class="method-icon">
+                            <i class="fas fa-server"></i>
+                        </div>
+                        <div class="method-info">
+                            <span class="method-label">Minecraft Server</span>
+                            <span class="method-value">play.steve42.com</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="newsletter">
+                    <h4>Subscribe to My Newsletter</h4>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Your Email" class="minecraft-input">
+                        <button class="minecraft-btn btn-secondary">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="minecraft-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <img src="assets/steve-head.jpg" alt="Steve Head">
+                <span>Ayush123445's Minecraft Adventures</span>
+            </div>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h4>Explore</h4>
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#journey">Journey</a>
+                    <a href="#builds">Builds</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Resources</h4>
+                    <a href="#gallery">Gallery</a>
+                    <a href="#resources">Downloads</a>
+                    <a href="#">Tutorials</a>
+                    <a href="#">Blog</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Use</a>
+                    <a href="#">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2023 Ayush123445's Minecraft Adventures. Not affiliated with Mojang or Microsoft.</p>
+            <p>All Minecraft assets, trademarks, and copyrights belong to their respective owners.</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Minecraft Cursor -->
+    <div class="minecraft-cursor"></div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
